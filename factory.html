@@ -1,7 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style id="muji-hide-gate">html{visibility:hidden!important}</style>
+<script>
+(function(){
+  var H="403baeae43343c12cce4824486d632224dbb9b53b7e28cd8a1f529a28a301b09",KEY="mora-auth";
+  function show(){var s=document.getElementById("muji-hide-gate");if(s)s.parentNode.removeChild(s);}
+  if(localStorage.getItem(KEY)===H){show();return;}
+  function build(){
+    var gate=document.createElement("div");
+    gate.id="muji-gate";
+    gate.style.cssText="position:fixed;inset:0;z-index:2147483647;background:#fff;color:#111;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Hiragino Sans',sans-serif;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;";
+    gate.innerHTML='<div style="max-width:340px;width:100%"><h1 style="font-size:13px;font-weight:600;letter-spacing:.08em;margin:0 0 20px;color:#666;text-transform:uppercase">Password Required</h1><form id="muji-f"><input type="password" id="muji-p" autofocus autocomplete="off" placeholder="パスワード" style="width:100%;padding:14px;border:1px solid #e5e7eb;border-radius:2px;font-size:15px;background:#fafafa;box-sizing:border-box;outline:none"><button type="submit" style="width:100%;margin-top:10px;padding:14px;background:#000;color:#fff;border:0;border-radius:2px;font-size:14px;letter-spacing:.05em;cursor:pointer">表示する</button><div id="muji-e" style="color:#b91c1c;font-size:13px;margin-top:14px;min-height:1.2em"></div></form></div>';
+    document.documentElement.appendChild(gate);
+    show();
+    document.getElementById("muji-f").addEventListener("submit",async function(e){
+      e.preventDefault();
+      var pw=document.getElementById("muji-p").value;
+      var buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(pw));
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");
+      if(h===H){localStorage.setItem(KEY,h);location.reload();}
+      else{document.getElementById("muji-e").textContent="パスワードが違います。";document.getElementById("muji-p").select();}
+    });
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",build);}else{build();}
+})();
+</script>
+<meta charset="UTF-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FACTORY PRODUCTION — MORAKNIV JAPAN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Mulish:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
