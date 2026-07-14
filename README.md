@@ -32,3 +32,5 @@
 - ドメイン: `morakniv.jp`（お名前.com。NS=01〜04.dnsv.jp、A `@`→216.198.79.1=Vercel）
 - 計測: GA4 `G-F83W782HB8`（morakniv.jp でのみ計測）
 - 送客先: Shopify `store.upioutdoor.com`（UTMで流入計測）
+
+<!-- deploy check: UNEPLAGE org 2026-07-14 -->
