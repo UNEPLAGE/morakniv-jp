@@ -34,3 +34,5 @@
 - 送客先: Shopify `store.upioutdoor.com`（UTMで流入計測）
 
 <!-- deploy check: UNEPLAGE org 2026-07-14 -->
+
+<!-- deploy check 2026-10-09 -->
